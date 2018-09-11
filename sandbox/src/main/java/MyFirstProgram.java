@@ -5,12 +5,17 @@ public class MyFirstProgram {
 		square();
 		rectangle();
 
-		double len = 5;
-		System.out.println("Площадь квадрата со стороной " + len + " = " + area(len));
+		Square s = new Square();
+		s.l = 5;
+		System.out.println("Площадь квадрата со стороной " + s.l + " = " + area(s));
 
-		double a = 2;
-		double b = 3;
-		System.out.println("Площадь прямоугольника со сторонами " + a + " и " + b + " = " + area(a, b));
+		Rectangle r = new Rectangle();
+		r.a = 2;
+		r.b = 3;
+		System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + area(r));
+
+		Point p = new Point(1,2,3,4);
+		System.out.println("Расстояние между точками p1 и p2 = " + p);
 	}
 
 	public static void hello(){
@@ -29,12 +34,12 @@ public class MyFirstProgram {
 		System.out.println("Площадь прямоугольника со сторонами " + a + " и " + b + " = " + d);
 	}
 
-	public static double area(double l){
-		return l * l;
+	public static double area(Square s){
+		return s.l * s.l;
 	}
 
-	public static double area(double a, double b){
-		return a * b;
+	public static double area(Rectangle r){
+		return r.a * r.b;
 	}
 
 }
