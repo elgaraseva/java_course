@@ -1,3 +1,5 @@
+package ru.stqa.pft.sandbox;
+
 public class MyFirstProgram {
 
 	public static void main(String[] args) {
@@ -5,8 +7,7 @@ public class MyFirstProgram {
 		square();
 		rectangle();
 
-		Square s = new Square();
-		s.l = 5;
+		Square s = new Square(5);
 		System.out.println("Площадь квадрата со стороной " + s.l + " = " + area(s));
 
 		Rectangle r = new Rectangle();
@@ -14,8 +15,17 @@ public class MyFirstProgram {
 		r.b = 3;
 		System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + area(r));
 
-		Point p = new Point(1,2,3,4);
-		System.out.println("Расстояние между точками p1 и p2 = " + p);
+		// считает расстояние между точками p1 и p2 при помощи функции distance
+    Point p1 = new Point(3,4);
+    Point p2 = new Point(6,8);
+    double result = distance(p1, p2);
+    System.out.println("Расстояние между точками p1 и p2 = " + result);
+
+
+    // считает расстояние между точками p1 и p2 при помощи методов calcDistance
+    System.out.println("Расстояние между точками p1 и p2 = " + p2.calcDistance(p1));
+
+    System.out.println("Расстояние между точками p1 и p2 = " + p2.calcDistance(10,1));
 	}
 
 	public static void hello(){
@@ -42,4 +52,7 @@ public class MyFirstProgram {
 		return r.a * r.b;
 	}
 
+	public static double distance(Point p1, Point p2){
+		return Math.sqrt((Math.pow((p2.x-p1.x),2))+(Math.pow((p2.y-p1.y),2)));
+	}
 }
