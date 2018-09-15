@@ -5,8 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import static org.testng.Assert.assertTrue;
-
 public class ContactHelper extends HelperBase {
 
   public ContactHelper(WebDriver driver) {
@@ -28,7 +26,8 @@ public class ContactHelper extends HelperBase {
 
   public void deleteSelectedContact() {
     click(By.xpath("//input[@value='Delete']"));
-    assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
+    driver.switchTo().alert().accept();
+    //driver.switchTo().alert().accept();
   }
 
   public boolean acceptNextAlert = true;
@@ -51,5 +50,13 @@ public class ContactHelper extends HelperBase {
     } finally {
       acceptNextAlert = true;
     }
+  }
+
+  public void initContactModification() {
+    click(By.xpath("//img[@alt='Edit']"));
+  }
+
+  public void submitContactModification() {
+  click(By.xpath("//input[@name='update']"));
   }
 }
