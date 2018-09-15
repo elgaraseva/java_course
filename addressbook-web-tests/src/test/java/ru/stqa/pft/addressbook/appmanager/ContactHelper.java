@@ -27,7 +27,6 @@ public class ContactHelper extends HelperBase {
   public void deleteSelectedContact() {
     click(By.xpath("//input[@value='Delete']"));
     driver.switchTo().alert().accept();
-    //driver.switchTo().alert().accept();
   }
 
   public boolean acceptNextAlert = true;

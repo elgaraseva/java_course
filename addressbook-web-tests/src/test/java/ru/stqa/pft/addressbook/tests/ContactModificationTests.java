@@ -6,7 +6,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 public class ContactModificationTests extends TestBase {
 
   @Test
-  public void testModificationContact() {
+  public void testContactModification() {
     app.getContactHelper().selectContact();
     app.getContactHelper().initContactModification();
     app.getContactHelper().fillContactForm(new ContactData ("Jim", "Halpert", "Dunder Mifflin", "019827364490", "j.halpert@dm.com", "Paper Street, 7, Scranton"));
