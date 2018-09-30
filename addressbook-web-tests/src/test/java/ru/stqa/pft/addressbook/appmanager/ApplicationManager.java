@@ -30,7 +30,7 @@ public class ApplicationManager {
       driver = new InternetExplorerDriver();
     }
 
-    driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     driver.get("http://localhost:8080/addressbook/addressbook/");
     groupHelper = new GroupHelper(driver);
     sessionHelper = new SessionHelper(driver);
