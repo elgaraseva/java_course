@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class ContactHelper extends HelperBase {
     }
   }
 
-  public void submitContactCreation() {
+  public void submitContact() {
     click(By.xpath("(//input[@name='submit'])[2]"));
   }
 
@@ -44,6 +45,11 @@ public class ContactHelper extends HelperBase {
 
   public void selectContact(int index) {
     driver.findElements(By.xpath("//td/input")).get(index).click();
+    acceptNextAlert = true;
+  }
+
+  private void selectContactById(int id) {
+    driver.findElement(By.cssSelector("input[value='" + id + "']")).click();
     acceptNextAlert = true;
   }
 
@@ -70,16 +76,38 @@ public class ContactHelper extends HelperBase {
   click(By.xpath("//input[@name='update']"));
   }
 
-  public void createContact(ContactData contact, boolean b) {
-    fillContactForm(new ContactData("Jim", "Halpert", "Dunder Mifflin", "02012345678", "j.halpert@dm.com", "Paper Street, 7, Scranton", "group_name"), true);
-    submitContactCreation();
+  public void create(ContactData contact, boolean b) {
+    fillContactForm(new ContactData()
+            .withFirstName("Jim").withLastName("Halpert").withCompany("Dunder Mifflin").withPhone("02012345678")
+            .withEmail("j.halpert@dm.com").withAddress("Paper Street, 7, Scranton").withGroup("group_name"), true);
+    submitContact();
+  }
+
+  public void modify(ContactData contact) {
+    selectContactById(contact.getId());
+    initContactModification(contact.getId());
+    fillContactForm(contact, false);
+    submitContactModification();
+    returnHomePage();
+  }
+
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
+    deleteSelectedContact();
+    returnHomePage();
+  }
+
+  public void returnHomePage() {
+    if (isElementPresent(By.id("maintable"))) {
+      return;
+    }
   }
 
   public boolean isThereAContact() {
     return isElementPresent(By.xpath("//td/input"));
   }
 
-  public boolean selectOptionInGroup() {
+  public boolean findGroup() {
     if (driver.findElement(By.name("new_group")).getText().contains("group_name")) {
       Select drodDown = new Select(driver.findElement(By.name("new_group")));
       drodDown.selectByVisibleText("group_name");
@@ -89,7 +117,7 @@ public class ContactHelper extends HelperBase {
     }
   }
 
-  public List<ContactData> getContactList(){
+  public List<ContactData> list(){
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = driver.findElements(By.name("entry"));
     int trStartIndex = 2;
@@ -97,8 +125,21 @@ public class ContactHelper extends HelperBase {
       String firstName = element.findElement(By.xpath("//tr[" + trStartIndex + "]" + "/td[3]")).getText();
       String lastName = element.findElement(By.xpath("//tr[" + trStartIndex + "]" +"/td[2]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      ContactData contact = new ContactData(id, firstName, lastName, null, null, null, null, null);
-      contacts.add(contact);
+      contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
+      trStartIndex++;
+    }
+    return contacts;
+  }
+
+  public Contacts all(){
+    Contacts contacts = new Contacts();
+    List<WebElement> elements = driver.findElements(By.name("entry"));
+    int trStartIndex = 2;
+    for (WebElement element : elements){
+      String firstName = element.findElement(By.xpath("//tr[" + trStartIndex + "]" + "/td[3]")).getText();
+      String lastName = element.findElement(By.xpath("//tr[" + trStartIndex + "]" +"/td[2]")).getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
       trStartIndex++;
     }
     return contacts;
