@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +22,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("company"), contactData.getCompany());
     type(By.name("mobile"), contactData.getPhone());
-    type(By.name("email"), contactData.getEmail());
+    type(By.name("email"), contactData.getFirstEmail());
     type(By.name("address2"), contactData.getAddress());
     if (creation) {
       new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -139,7 +138,11 @@ public class ContactHelper extends HelperBase {
       String firstName = element.findElement(By.xpath("//tr[" + trStartIndex + "]" + "/td[3]")).getText();
       String lastName = element.findElement(By.xpath("//tr[" + trStartIndex + "]" +"/td[2]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
+      String allPhones = element.findElement(By.xpath("//table[@id='maintable']/tbody/tr[" + trStartIndex + "]/td[6]")).getText();
+      String allEmails = element.findElement(By.xpath("//table[@id='maintable']/tbody/tr[" + trStartIndex + "]/td[5]")).getText();
+      String allAddresses = element.findElement(By.xpath("//table[@id='maintable']/tbody/tr[" + trStartIndex + "]/td[4]")).getText();
+      contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName).withAllPhones(allPhones)
+              .withAllEmails(allEmails).withAllAddresses(allAddresses));
       trStartIndex++;
     }
     return contacts;
@@ -149,4 +152,29 @@ public class ContactHelper extends HelperBase {
     return driver.findElements(By.name("selected[]")).size();
   }
 
+  public ContactData infoFromEditForm(ContactData contact) {
+    initContactModificationById(contact.getId());
+    String firstname = driver.findElement(By.name("firstname")).getAttribute("value");
+    String lastname = driver.findElement(By.name("lastname")).getAttribute("value");
+    String home = driver.findElement(By.name("home")).getAttribute("value");
+    String mobile = driver.findElement(By.name("mobile")).getAttribute("value");
+    String work = driver.findElement(By.name("work")).getAttribute("value");
+    String firstEmail = driver.findElement(By.name("email")).getAttribute("value");
+    String secondEmail = driver.findElement(By.name("email2")).getAttribute("value");
+    String thirdEmail = driver.findElement(By.name("email3")).getAttribute("value");
+    String address = driver.findElement(By.name("address")).getAttribute("value");
+    String secondAddress = driver.findElement(By.name("address2")).getAttribute("value");
+    driver.navigate().back();
+    return new ContactData()
+            .withId(contact.getId()).withFirstName(firstname).withLastName(lastname).withHomePhone(home)
+            .withMobilePhone(mobile).withWorkPhone(work).withFirstEmail(firstEmail).withSecondEmail(secondEmail)
+            .withThirdEmail(thirdEmail).withAddress(address).withSecondAddress(secondAddress);
+  }
+
+  private void initContactModificationById(int id){
+    WebElement checkbox = driver.findElement(By.cssSelector(String.format("input[value='%s']", id)));
+    WebElement row = checkbox.findElement(By.xpath("./../.."));
+    List<WebElement> cells = row.findElements(By.tagName("td"));
+    cells.get(7).findElement(By.tagName("a")).click();
+  }
 }

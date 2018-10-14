@@ -17,8 +17,8 @@ public class ContactCreationTests extends TestBase {
     if(! app.contact().findGroup()) {
       app.goTo().groupPage();
       app.group().create(new GroupData().withName("group_name"));
-      app.goTo().homePage();
     }
+    app.goTo().homePage();
   }
 
   @Test

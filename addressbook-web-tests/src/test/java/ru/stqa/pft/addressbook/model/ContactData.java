@@ -9,8 +9,18 @@ public class ContactData {
   private String lastName;
   private String company;
   private String phone;
+  private String homePhone;
+  private String mobilePhone;
+  private String workPhone;
+  private String allPhones;
   private String email;
+  private String firstEmail;
+  private String secondEmail;
+  private String thirdEmail;
+  private String allEmails;
   private String address;
+  private String secondAddress;
+  private String allAddresses;
   private String group;
 
   public ContactData withId(int id) {
@@ -38,13 +48,63 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withHomePhone(String homePhone) {
+    this.homePhone = homePhone;
+    return this;
+  }
+
+  public ContactData withMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
+    return this;
+  }
+
+  public ContactData withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
+    return this;
+  }
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
   public ContactData withEmail(String email) {
     this.email = email;
     return this;
   }
 
+  public ContactData withFirstEmail(String firstEmail) {
+    this.firstEmail = firstEmail;
+    return this;
+  }
+
+  public ContactData withSecondEmail(String secondEmail) {
+    this.secondEmail = secondEmail;
+    return this;
+  }
+
+  public ContactData withThirdEmail(String thirdEmail) {
+    this.thirdEmail = thirdEmail;
+    return this;
+  }
+
+  public ContactData withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
+
   public ContactData withAddress(String address) {
     this.address = address;
+    return this;
+  }
+
+  public ContactData withSecondAddress(String secondAddress) {
+    this.secondAddress = secondAddress;
+    return this;
+  }
+
+  public ContactData withAllAddresses(String allAddresses) {
+    this.allAddresses = allAddresses;
     return this;
   }
 
@@ -71,15 +131,56 @@ public class ContactData {
     return phone;
   }
 
+  public String getHomePhone() {
+    return homePhone;
+  }
+
+  public String getMobilePhone() {
+    return mobilePhone;
+  }
+
+  public String getWorkPhone() {
+    return workPhone;
+  }
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
   public String getEmail() {
     return email;
+  }
+
+  public String getFirstEmail() {
+    return firstEmail;
+  }
+
+  public String getSecondEmail() {
+    return secondEmail;
+  }
+
+  public String getThirdEmail() {
+    return thirdEmail;
+  }
+
+  public String getAllEmails() {
+    return allEmails;
   }
 
   public String getAddress() {
     return address;
   }
 
+  public String getSecondAddress() {
+    return secondAddress;
+  }
+
+  public String getAllAddresses() {
+    return allAddresses;
+  }
+
   public String getGroup() { return group; }
+
 
   @Override
   public String toString() {
