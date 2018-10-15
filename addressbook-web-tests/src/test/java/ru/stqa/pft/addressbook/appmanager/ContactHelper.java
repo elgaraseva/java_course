@@ -22,8 +22,10 @@ public class ContactHelper extends HelperBase {
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("company"), contactData.getCompany());
     type(By.name("mobile"), contactData.getPhone());
-    type(By.name("email"), contactData.getFirstEmail());
-    type(By.name("address2"), contactData.getAddress());
+    type(By.name("email"), contactData.getEmail());
+    type(By.name("address"), contactData.getAddress());
+    attach(By.name("photo"), contactData.getPhoto());
+
     if (creation) {
       new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
@@ -76,9 +78,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void create(ContactData contact, boolean b) {
-    fillContactForm(new ContactData()
-            .withFirstName("Jim").withLastName("Halpert").withCompany("Dunder Mifflin").withPhone("02012345678")
-            .withEmail("j.halpert@dm.com").withAddress("Paper Street, 7, Scranton").withGroup("group_name"), true);
+    fillContactForm(contact, true);
     submitContact();
   }
 
@@ -159,7 +159,7 @@ public class ContactHelper extends HelperBase {
     String home = driver.findElement(By.name("home")).getAttribute("value");
     String mobile = driver.findElement(By.name("mobile")).getAttribute("value");
     String work = driver.findElement(By.name("work")).getAttribute("value");
-    String firstEmail = driver.findElement(By.name("email")).getAttribute("value");
+    String email = driver.findElement(By.name("email")).getAttribute("value");
     String secondEmail = driver.findElement(By.name("email2")).getAttribute("value");
     String thirdEmail = driver.findElement(By.name("email3")).getAttribute("value");
     String address = driver.findElement(By.name("address")).getAttribute("value");
@@ -167,7 +167,7 @@ public class ContactHelper extends HelperBase {
     driver.navigate().back();
     return new ContactData()
             .withId(contact.getId()).withFirstName(firstname).withLastName(lastname).withHomePhone(home)
-            .withMobilePhone(mobile).withWorkPhone(work).withFirstEmail(firstEmail).withSecondEmail(secondEmail)
+            .withMobilePhone(mobile).withWorkPhone(work).withEmail(email).withSecondEmail(secondEmail)
             .withThirdEmail(thirdEmail).withAddress(address).withSecondAddress(secondAddress);
   }
 
