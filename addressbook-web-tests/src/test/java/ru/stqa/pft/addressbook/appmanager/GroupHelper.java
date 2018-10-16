@@ -9,6 +9,10 @@ import java.util.List;
 
 public class GroupHelper extends HelperBase {
 
+  private String name;
+  private String header;
+  private String footer;
+
   public GroupHelper(WebDriver driver) {
     super(driver);
   }
@@ -49,7 +53,7 @@ public class GroupHelper extends HelperBase {
 
   public void create(GroupData group) {
     initGroupCreation();
-    fillGroupForm(new GroupData().withName("group_name"));
+    fillGroupForm(group);
     submitGroupCreation();
     groupCash = null;
     returnToGroupPage();
