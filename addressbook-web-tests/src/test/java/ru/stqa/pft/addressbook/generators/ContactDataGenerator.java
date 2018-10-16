@@ -67,12 +67,20 @@ public class ContactDataGenerator {
   }
 
   private List<ContactData> generateContacts(int count) {
+    File photo1 = new File("src/test/resources/jhalpert.jpg");
+    File photo2 = new File("src/test/resources/pbeesly.jpg");
     List <ContactData> contacts =  new ArrayList<ContactData>();
     for (int i = 0; i < count; i++){
+      contacts.add(new ContactData().withFirstName(String.format("Jim", i))
+              .withLastName(String.format("Halpert", i)).withCompany(String.format("Dunder Mifflin", i))
+              .withPhone(String.format("021147499543", i)).withEmail(String.format("jhalpert@dm.com", i))
+              .withAddress(String.format("Paper Street, 77, Scranton", i)).withGroup(String.format("group_name", i))
+              .withPhoto(photo1));
       contacts.add(new ContactData().withFirstName(String.format("Pam", i))
               .withLastName(String.format("Beesly", i)).withCompany(String.format("Dunder Mifflin", i))
-              .withMobilePhone(String.format("021-537-499-644", i)).withEmail(String.format("p.beesly@dm.com", i))
-              .withAddress(String.format("Art Street, 8, Scranton", i)));
+              .withPhone(String.format("021537499644", i)).withEmail(String.format("p.beesly@dm.com", i))
+              .withAddress(String.format("Art Street, 8, Scranton", i)).withGroup(String.format("group_name", i))
+              .withPhoto(photo2));
     }
     return contacts;
   }
