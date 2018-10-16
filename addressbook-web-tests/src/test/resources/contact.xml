@@ -1,0 +1,29 @@
+<list>
+  <contact>
+    <id>2147483647</id>
+    <firstName>Pam 0</firstName>
+    <lastName>Beesly 0</lastName>
+    <company>Dunder Mifflin 0</company>
+    <mobilePhone>021-537-499-644</mobilePhone>
+    <email>p.beesly@dm.com</email>
+    <address>Art Street, 8, Scranton</address>
+  </contact>
+  <contact>
+    <id>2147483647</id>
+    <firstName>Pam 1</firstName>
+    <lastName>Beesly 1</lastName>
+    <company>Dunder Mifflin 1</company>
+    <mobilePhone>021-537-499-644</mobilePhone>
+    <email>p.beesly@dm.com</email>
+    <address>Art Street, 8, Scranton</address>
+  </contact>
+  <contact>
+    <id>2147483647</id>
+    <firstName>Pam 2</firstName>
+    <lastName>Beesly 2</lastName>
+    <company>Dunder Mifflin 2</company>
+    <mobilePhone>021-537-499-644</mobilePhone>
+    <email>p.beesly@dm.com</email>
+    <address>Art Street, 8, Scranton</address>
+  </contact>
+</list>

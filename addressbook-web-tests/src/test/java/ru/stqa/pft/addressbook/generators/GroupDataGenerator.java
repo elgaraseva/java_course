@@ -7,7 +7,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.GroupData;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -47,7 +46,7 @@ public class GroupDataGenerator {
       } else if (format.equals("json")){
         saveAsJson(groups, new File(file));
       } else {
-        System.out.println("Unregnized format " + format);
+        System.out.println("Unrecognized format " + format);
       }
   }
 
@@ -76,7 +75,7 @@ public class GroupDataGenerator {
     Writer writer = new FileWriter(file);
     writer.write(json);
     writer.close();
-    }
+  }
 
   private List<GroupData> generateGroups(int count) {
     List <GroupData> groups =  new ArrayList<GroupData>();
