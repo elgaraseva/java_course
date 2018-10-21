@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.pft.addressbook.tests.ContactCreationTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-10-16T21:03:01" hostname="DESKTOP-E4LE4TC" time="24.572">
+  <properties/>
+  <testcase name="testContactCreation[0](ContactData{id=0, firstName='Jim', lastName='Halpert'})" classname="ru.stqa.pft.addressbook.tests.ContactCreationTests" time="8.269"/>
+  <testcase name="testContactCreation[1](ContactData{id=0, firstName='Pam', lastName='Beesly'})" classname="ru.stqa.pft.addressbook.tests.ContactCreationTests" time="10.73"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Security framework of XStream not initialized, XStream is probably vulnerable.
+1539723775871	Marionette	DEBUG	[4294967297] Received DOM event beforeunload for http://localhost:8080/addressbook/addressbook/group.php
+1539723775900	Marionette	DEBUG	[4294967297] Received DOM event pagehide for http://localhost:8080/addressbook/addressbook/group.php
+1539723775901	Marionette	DEBUG	[4294967297] Received DOM event unload for http://localhost:8080/addressbook/addressbook/group.php
+1539723775910	Marionette	DEBUG	[4294967297] Received DOM event DOMContentLoaded for http://localhost:8080/addressbook/addressbook/edit.php
+1539723775928	Marionette	DEBUG	[4294967297] Received DOM event pageshow for http://localhost:8080/addressbook/addressbook/edit.php
+1539723776255	Marionette	DEBUG	[4294967297] Canceled page load listener because no navigation has been detected
+1539723781300	Marionette	DEBUG	[4294967297] Received DOM event beforeunload for http://localhost:8080/addressbook/addressbook/edit.php
+1539723781366	Marionette	DEBUG	[4294967297] Received DOM event pagehide for http://localhost:8080/addressbook/addressbook/edit.php
+1539723781367	Marionette	DEBUG	[4294967297] Received DOM event unload for http://localhost:8080/addressbook/addressbook/edit.php
+1539723781404	Marionette	DEBUG	[4294967297] Received DOM event DOMContentLoaded for http://localhost:8080/addressbook/addressbook/
+1539723781414	Marionette	DEBUG	[4294967297] Received DOM event pageshow for http://localhost:8080/addressbook/addressbook/
+1539723782846	Marionette	DEBUG	[4294967297] Received DOM event beforeunload for http://localhost:8080/addressbook/addressbook/
+1539723782889	Marionette	DEBUG	[4294967297] Received DOM event pagehide for http://localhost:8080/addressbook/addressbook/
+1539723782890	Marionette	DEBUG	[4294967297] Received DOM event unload for http://localhost:8080/addressbook/addressbook/
+1539723782904	Marionette	DEBUG	[4294967297] Received DOM event DOMContentLoaded for http://localhost:8080/addressbook/addressbook/edit.php
+1539723782922	Marionette	DEBUG	[4294967297] Received DOM event pageshow for http://localhost:8080/addressbook/addressbook/edit.php
+1539723783167	Marionette	DEBUG	[4294967297] Canceled page load listener because no navigation has been detected
+1539723783434	Marionette	DEBUG	[4294967297] Canceled page load listener because no navigation has been detected
+1539723783699	Marionette	DEBUG	[4294967297] Canceled page load listener because no navigation has been detected
+1539723783968	Marionette	DEBUG	[4294967297] Canceled page load listener because no navigation has been detected
+1539723784256	Marionette	DEBUG	[4294967297] Canceled page load listener because no navigation has been detected
+1539723784539	Marionette	DEBUG	[4294967297] Canceled page load listener because no navigation has been detected
+1539723784863	Marionette	DEBUG	[4294967297] Canceled page load listener because no navigation has been detected
+1539723784884	Marionette	DEBUG	[4294967297] Received DOM event beforeunload for http://localhost:8080/addressbook/addressbook/edit.php
+1539723784996	Marionette	DEBUG	[4294967297] Received DOM event pagehide for http://localhost:8080/addressbook/addressbook/edit.php
+1539723784997	Marionette	DEBUG	[4294967297] Received DOM event unload for http://localhost:8080/addressbook/addressbook/edit.php
+1539723785010	Marionette	DEBUG	[4294967297] Received DOM event DOMContentLoaded for http://localhost:8080/addressbook/addressbook/edit.php
+1539723785018	Marionette	DEBUG	[4294967297] Received DOM event pageshow for http://localhost:8080/addressbook/addressbook/edit.php
+1539723797460	Marionette	DEBUG	[4294967297] Received DOM event beforeunload for http://localhost:8080/addressbook/addressbook/
+1539723797493	Marionette	DEBUG	[4294967297] Received DOM event pagehide for http://localhost:8080/addressbook/addressbook/
+1539723797494	Marionette	DEBUG	[4294967297] Received DOM event unload for http://localhost:8080/addressbook/addressbook/
+1539723797512	Marionette	DEBUG	[4294967297] Received DOM event DOMContentLoaded for http://localhost:8080/addressbook/addressbook/edit.php
+1539723797534	Marionette	DEBUG	[4294967297] Received DOM event pageshow for http://localhost:8080/addressbook/addressbook/edit.php
+1539723797779	Marionette	DEBUG	[4294967297] Canceled page load listener because no navigation has been detected
+1539723798174	Marionette	DEBUG	[4294967297] Canceled page load listener because no navigation has been detected
+1539723798553	Marionette	DEBUG	[4294967297] Canceled page load listener because no navigation has been detected
+1539723798945	Marionette	DEBUG	[4294967297] Canceled page load listener because no navigation has been detected
+1539723799294	Marionette	DEBUG	[4294967297] Canceled page load listener because no navigation has been detected
+1539723799643	Marionette	DEBUG	[4294967297] Canceled page load listener because no navigation has been detected
+1539723800112	Marionette	DEBUG	[4294967297] Canceled page load listener because no navigation has been detected
+1539723800142	Marionette	DEBUG	[4294967297] Received DOM event beforeunload for http://localhost:8080/addressbook/addressbook/edit.php
+1539723800213	Marionette	DEBUG	[4294967297] Received DOM event pagehide for http://localhost:8080/addressbook/addressbook/edit.php
+1539723800214	Marionette	DEBUG	[4294967297] Received DOM event unload for http://localhost:8080/addressbook/addressbook/edit.php
+1539723800224	Marionette	DEBUG	[4294967297] Received DOM event DOMContentLoaded for http://localhost:8080/addressbook/addressbook/edit.php
+1539723800235	Marionette	DEBUG	[4294967297] Received DOM event pageshow for http://localhost:8080/addressbook/addressbook/edit.php
+]]></system-err>
+</testsuite>

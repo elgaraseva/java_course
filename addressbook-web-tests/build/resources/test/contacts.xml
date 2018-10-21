@@ -1,0 +1,22 @@
+<list>
+  <contact>
+    <firstName>Jim</firstName>
+    <lastName>Halpert</lastName>
+    <company>Dunder Mifflin</company>
+    <phone>021147499543</phone>
+    <email>jhalpert@dm.com</email>
+    <address>Paper Street, 77, Scranton</address>
+    <group>group_name</group>
+    <photo>src\test\resources\jhalpert.jpg</photo>
+  </contact>
+  <contact>
+    <firstName>Pam</firstName>
+    <lastName>Beesly</lastName>
+    <company>Dunder Mifflin</company>
+    <phone>021537499644</phone>
+    <email>p.beesly@dm.com</email>
+    <address>Art Street, 8, Scranton</address>
+    <group>group_name</group>
+    <photo>src\test\resources\pbeesly.jpg</photo>
+  </contact>
+</list>
