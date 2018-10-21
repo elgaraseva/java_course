@@ -4,6 +4,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -13,12 +14,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ContactPhoneTests extends TestBase {
 
   @BeforeMethod
-  public void ensurePreconditions(){
+  public void ensurePreconditions() throws FileNotFoundException {
     if (app.contact().all().size() == 0) {
       app.goTo().contactPage();
       if(! app.contact().findGroup()){
         app.goTo().groupPage();
-        app.group().create(new GroupData().withName("group_name"));
+        app.group().create(new GroupData().withName(app.properties.getProperty("baseGroupe")));
         app.goTo().contactPage();
       }
       app.contact().create(null, true);

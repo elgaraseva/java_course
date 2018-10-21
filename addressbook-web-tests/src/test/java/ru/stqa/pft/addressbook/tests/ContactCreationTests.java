@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -42,7 +41,7 @@ public class ContactCreationTests extends TestBase {
     app.goTo().contactPage();
     if(! app.contact().findGroup()) {
       app.goTo().groupPage();
-      app.group().create(new GroupData().withName("group_name"));
+      app.group().create(new GroupData().withName(app.properties.getProperty("baseGroupe")));
     }
     app.goTo().homePage();
   }
