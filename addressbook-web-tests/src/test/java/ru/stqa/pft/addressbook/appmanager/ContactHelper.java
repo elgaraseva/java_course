@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -108,8 +109,8 @@ public class ContactHelper extends HelperBase {
 
   public boolean findGroup() {
     if (driver.findElement(By.name("new_group")).getText().contains("group_name")) {
-      Select drodDown = new Select(driver.findElement(By.name("new_group")));
-      drodDown.selectByVisibleText("group_name");
+      Select dropDown = new Select(driver.findElement(By.name("new_group")));
+      dropDown.selectByVisibleText("group_name");
       return true;
     } else {
       return false;

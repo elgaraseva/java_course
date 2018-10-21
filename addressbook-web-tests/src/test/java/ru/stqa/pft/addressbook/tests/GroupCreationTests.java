@@ -7,7 +7,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -67,7 +66,7 @@ public class GroupCreationTests extends TestBase {
   public void testBadGroupCreation() throws Exception {
     app.goTo().groupPage();
     Groups before = app.group().all();
-    GroupData group = new GroupData().withName("group_name");
+    GroupData group = new GroupData().withName(app.properties.getProperty("baseGroupe"));
     app.group().create(group);
     assertThat(app.group().count(), equalTo(before.size()));
     Groups after = app.group().all();

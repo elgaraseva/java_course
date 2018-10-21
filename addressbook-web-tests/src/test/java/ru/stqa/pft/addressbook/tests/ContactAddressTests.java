@@ -4,6 +4,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -13,12 +15,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ContactAddressTests extends TestBase{
 
   @BeforeMethod
-  public void ensurePreconditions(){
+  public void ensurePreconditions() throws FileNotFoundException, ParserConfigurationException {
     if (app.contact().all().size() == 0) {
       app.goTo().contactPage();
       if(! app.contact().findGroup()){
         app.goTo().groupPage();
-        app.group().create(new GroupData().withName("group_name"));
+        app.group().create(new GroupData().withName(app.properties.getProperty("baseGroupe")));
         app.goTo().contactPage();
       }
       app.contact().create(null, true);
@@ -27,14 +29,14 @@ public class ContactAddressTests extends TestBase{
   }
 
   @Test
-  public void testContactAddress(){
+  public void testContactAddress() throws FileNotFoundException {
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
     assertThat(contact.getAllAddresses(), equalTo(mergeAddresses(contactInfoFromEditForm)));
   }
 
-  private String mergeAddresses(ContactData contact) {
+  private String mergeAddresses(ContactData contact) throws FileNotFoundException {
     return Arrays.asList(contact.getAddress(), contact.getSecondAddress())
             .stream().filter((s) -> ! s.equals(""))
             .collect(Collectors.joining("\n"));
