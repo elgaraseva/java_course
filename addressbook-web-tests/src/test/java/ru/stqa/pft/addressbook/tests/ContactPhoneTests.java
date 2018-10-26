@@ -15,9 +15,9 @@ public class ContactPhoneTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() throws FileNotFoundException {
-    if (app.contact().all().size() == 0) {
+    if (app.db().contacts().size() == 0) {
       app.goTo().contactPage();
-      if(! app.contact().findGroup()){
+      if(! app.db().groups().contains(app.properties.getProperty("baseGroupe"))){
         app.goTo().groupPage();
         app.group().create(new GroupData().withName(app.properties.getProperty("baseGroupe")));
         app.goTo().contactPage();

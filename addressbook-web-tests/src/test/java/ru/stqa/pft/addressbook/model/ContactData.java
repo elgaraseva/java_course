@@ -234,7 +234,10 @@ public class ContactData {
     return group; }
 
   public File getPhoto() {
-    return new File (photo);
+    if(photo!=null) {
+      return new File(photo);
+    }
+    return null;
   }
 
   @Override

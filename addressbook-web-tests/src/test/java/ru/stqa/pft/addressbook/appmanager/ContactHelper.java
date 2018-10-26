@@ -149,7 +149,7 @@ public class ContactHelper extends HelperBase {
     return contacts;
   }
 
-  public int getContactCount() {
+  public int count() {
     return driver.findElements(By.name("selected[]")).size();
   }
 
@@ -178,4 +178,5 @@ public class ContactHelper extends HelperBase {
     List<WebElement> cells = row.findElements(By.tagName("td"));
     cells.get(7).findElement(By.tagName("a")).click();
   }
+
 }

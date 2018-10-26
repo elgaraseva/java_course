@@ -15,9 +15,9 @@ public class ContactModificationTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() throws FileNotFoundException {
-    if (app.contact().all().size() == 0) {
+    if (app.db().contacts().size() == 0) {
       app.goTo().contactPage();
-      if(! app.contact().findGroup()){
+      if(! app.db().groups().contains(app.properties.getProperty("baseGroupe"))){
         app.goTo().groupPage();
         app.group().create(new GroupData().withName(app.properties.getProperty("baseGroupe")));
         app.goTo().contactPage();
@@ -30,7 +30,7 @@ public class ContactModificationTests extends TestBase {
   @Test
   public void testContactModification() throws FileNotFoundException {
 
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData()
             .withId(modifiedContact.getId())
@@ -41,7 +41,7 @@ public class ContactModificationTests extends TestBase {
             .withEmail(app.properties.getProperty("modifyContactEmail"))
             .withAddress(app.properties.getProperty("modifyContactAddress"));
     app.contact().modify(contact);
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertEquals(after.size(), before.size());
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
   }
