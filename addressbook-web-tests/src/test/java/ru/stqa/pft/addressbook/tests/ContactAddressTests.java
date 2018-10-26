@@ -34,6 +34,7 @@ public class ContactAddressTests extends TestBase{
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
     assertThat(contact.getAllAddresses(), equalTo(mergeAddresses(contactInfoFromEditForm)));
+    verifyContactListInUI();
   }
 
   private String mergeAddresses(ContactData contact) throws FileNotFoundException {

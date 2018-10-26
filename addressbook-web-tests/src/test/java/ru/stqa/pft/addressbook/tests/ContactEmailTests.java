@@ -33,6 +33,7 @@ public class ContactEmailTests extends TestBase{
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
     assertThat(contact.getAllEmails(), equalTo(mergeEmail(contactInfoFromEditForm)));
+    verifyContactListInUI();
   }
 
   private String mergeEmail(ContactData contact) throws FileNotFoundException {
