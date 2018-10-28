@@ -7,6 +7,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupData;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -39,7 +41,7 @@ public class ContactDataGenerator {
 
   private void run() throws IOException {
     List<ContactData> contacts =  generateContacts(count);
-    if (format.equals("xml")){
+    if (format.equals("xml")) {
       saveAsXml(contacts, new File(file));
     } else if (format.equals("json")){
       saveAsJson(contacts, new File(file));
@@ -66,22 +68,21 @@ public class ContactDataGenerator {
     }
   }
 
-  private List<ContactData> generateContacts(int count) {
+  public List<ContactData> generateContacts(int count) {
     File photo1 = new File("src/test/resources/jhalpert.jpg");
     File photo2 = new File("src/test/resources/pbeesly.jpg");
-    File photo3 = new File("src/test/resources/mscott.png");
     List <ContactData> contacts =  new ArrayList<ContactData>();
     for (int i = 0; i < count; i++){
+      GroupData group = new GroupData();
+      group.withName("group_name").withHeader("group_header").withFooter("group_footer");
       contacts.add(new ContactData().withFirstName(String.format("Jim", i))
               .withLastName(String.format("Halpert", i)).withCompany(String.format("Dunder Mifflin", i))
               .withPhone(String.format("021147499543", i)).withEmail(String.format("jhalpert@dm.com", i))
-              .withAddress(String.format("Paper Street, 77, Scranton", i)).withGroup(String.format("group_name", i))
-              .withPhoto(photo1));
+              .withAddress(String.format("Paper Street, 77, Scranton", i)).inGroup(group).withPhoto(photo1));
       contacts.add(new ContactData().withFirstName(String.format("Pam", i))
               .withLastName(String.format("Beesly", i)).withCompany(String.format("Dunder Mifflin", i))
               .withPhone(String.format("021537499644", i)).withEmail(String.format("p.beesly@dm.com", i))
-              .withAddress(String.format("Art Street, 8, Scranton", i)).withGroup(String.format("group_name", i))
-              .withPhoto(photo2));
+              .withAddress(String.format("Art Street, 8, Scranton", i)).inGroup(group).withPhoto(photo2));
     }
     return contacts;
   }

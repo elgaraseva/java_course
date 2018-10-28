@@ -29,7 +29,7 @@ public class DbHelper {
     session.beginTransaction();
     List<GroupData> result = session.createQuery("from GroupData where deprecated = '0000-00-00 00:00:00'").list();
     for (GroupData group : result) {
-      System.out.println(group);
+      System.out.println(group.getContacts());
     }
     session.getTransaction().commit();
     session.close();

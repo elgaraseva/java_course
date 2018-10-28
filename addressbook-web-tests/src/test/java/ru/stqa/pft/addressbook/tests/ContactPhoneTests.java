@@ -2,6 +2,7 @@ package ru.stqa.pft.addressbook.tests;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import ru.stqa.pft.addressbook.generators.ContactDataGenerator;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 import java.io.FileNotFoundException;
@@ -17,12 +18,12 @@ public class ContactPhoneTests extends TestBase {
   public void ensurePreconditions() throws FileNotFoundException {
     if (app.db().contacts().size() == 0) {
       app.goTo().contactPage();
-      if(! app.db().groups().contains(app.properties.getProperty("baseGroupe"))){
+      if(app.db().groups().size() == 0){
         app.goTo().groupPage();
         app.group().create(new GroupData().withName(app.properties.getProperty("baseGroupe")));
         app.goTo().contactPage();
       }
-      app.contact().create(null, true);
+      app.contact().create(new ContactDataGenerator().generateContacts(1).get(0), true);
     }
     app.goTo().homePage();
   }

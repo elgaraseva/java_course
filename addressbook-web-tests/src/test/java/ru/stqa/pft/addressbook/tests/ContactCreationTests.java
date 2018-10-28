@@ -7,6 +7,8 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -38,7 +40,7 @@ public class ContactCreationTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions(){
-    if(! app.db().groups().contains(app.properties.getProperty("baseGroupe"))) {
+    if(app.db().groups().size() == 0) {
       app.goTo().groupPage();
       app.group().create(new GroupData().withName(app.properties.getProperty("baseGroupe")));
     }
@@ -47,6 +49,7 @@ public class ContactCreationTests extends TestBase {
 
   @Test (dataProvider = "validContactsFromXml")
   public void testContactCreation(ContactData contact) throws Exception {
+    Groups groupFromDatabase = app.db().groups();
     Contacts before = app.db().contacts();
     app.goTo().contactPage();
     app.contact().create(contact, true);
