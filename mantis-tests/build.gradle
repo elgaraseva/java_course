@@ -18,6 +18,7 @@ dependencies {
     compile 'commons-net:commons-net:3.6'
     compile 'com.beust:jcommander:1.48'
     compile 'com.google.code.gson:gson:2.8.4'
+    compile 'biz.futureware.mantis:mantis-axis-soap-client:1.2.19'
 }
 
 test{
