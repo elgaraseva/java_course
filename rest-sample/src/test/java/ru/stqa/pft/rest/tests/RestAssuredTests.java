@@ -1,4 +1,4 @@
-package ru.stqa.pft.rest;
+package ru.stqa.pft.rest.tests;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -7,6 +7,8 @@ import com.google.gson.reflect.TypeToken;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import com.jayway.restassured.RestAssured;
+import ru.stqa.pft.rest.model.Issue;
+
 import java.io.IOException;
 import java.util.Set;
 import static org.testng.Assert.assertEquals;
